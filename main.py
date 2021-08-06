@@ -1,3 +1,5 @@
+#I used Google Colab developing the logic here
+#copy and paste code below will run the whole program
 ! pip install pyquery
 # import PyQuery(class)  from pyquery modle
 from pyquery import PyQuery
@@ -13,26 +15,24 @@ def get_lottery():
 
 print(get_lottery())
 
-reference_number= []
-original = []
-for n in range(39):
-    original.append(0)
-print(original)
+arr=[]
+for i in range(39):
+    arr.append(0)
+total=0
+for number in get_lottery():
+    number= int(number)
+    arr[number]+=1
+    total+=1
+print(arr)
 
-for n in range(39):
-    reference_number.append(n)
-print("[reference_number]")
-print(reference_number)
+order=[]
+for i in range(39):
+    order.append(i)
+print(order)
+combine= reversed(sorted(zip(arr, order))) #first: appear how many times, #second: the number itself
 
-for n in get_lottery():
-    a = int(n)
-    #original[a ] = original[a ]
-    # original = original[a-1]+1
-    print(a)
-
-print("[lottery_result]")
-print(original)
-
+for group in combine:
+    print(group)
 
 
 
